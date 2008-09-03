@@ -83,3 +83,7 @@ Methods that perform expensive lookups or computation can save their state to th
 h2. Feedback
 
 Feedback is always welcome: matt.wood@sanger.ac.uk
+
+h2. License
+
+This plugin is open source, and distributed under the BSD licence.
