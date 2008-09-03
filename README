@@ -1,0 +1,14 @@
+Denormalizer
+============
+
+The Denormalizer extends ActiveRecord to allow for easy denormalization of attributes (real and computed) from one model to another.
+
+Installation
+
+Those rolling on Edge Rails can grab the plugin directly from the git repository:
+
+./script/plugin install http://github.com/mza/denormalizer
+
+Otherwise, clone the plugin in to the vendor/plugins folder to get started:
+
+git clone --depth 1 git://github.com/mza/denormalizer.git vendor/plugins/denormalizer
