@@ -1,8 +1,8 @@
-h1.The Denormalizer
+h1. The Denormalizer
 
 The Denormalizer extends ActiveRecord to allow for easy denormalization of attributes (real and computed) from one model to another.
 
-h2.Installation
+h2. Installation
 
 Those rolling on Edge Rails can grab the plugin directly from the git repository:
 
@@ -12,7 +12,7 @@ Otherwise, clone the plugin in to the vendor/plugins folder to get started:
 
 git clone --depth 1 git://github.com/mza/denormalizer.git vendor/plugins/denormalizer
 
-h3.Denormalizing
+h2. Denormalizing
 
 The Denormalizer arranges for attributes on one model to be saved as an attribute on a related model. This allows for faster queries,
 since relationship trees don't have to be fully loaded to retrieve the values. It can also save the results of a model's method to the
