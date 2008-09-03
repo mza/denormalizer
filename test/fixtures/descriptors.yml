@@ -1,0 +1,30 @@
+family_3_desc_1:
+  id: 7
+  family_id: 3
+  version: 1
+  name: MyString
+  value: MyString
+  kind: String
+  required: 0
+  selection: MyString
+  sorter: 2
+family_3_desc_2:
+  id: 8
+  family_id: 3
+  version: 2
+  name: MyString
+  value: MyString
+  kind: String
+  required: 0
+  selection: MyString
+  sorter: 2
+family_3_desc_3:
+  id: 9
+  family_id: 3
+  version: 2
+  name: MyString
+  value: MyString
+  kind: String
+  required: 0
+  selection: MyString
+  sorter: 2
