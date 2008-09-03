@@ -6,14 +6,80 @@ h2. Installation
 
 Those rolling on Edge Rails can grab the plugin directly from the git repository:
 
+<pre>
+<code>
 ./script/plugin install http://github.com/mza/denormalizer
+</code>
+</pre>
 
 Otherwise, clone the plugin in to the vendor/plugins folder to get started:
 
+<pre>
+<code>
 git clone --depth 1 git://github.com/mza/denormalizer.git vendor/plugins/denormalizer
+</code>
+</pre>
 
 h2. Denormalizing
 
 The Denormalizer arranges for attributes on one model to be saved as an attribute on a related model. This allows for faster queries,
 since relationship trees don't have to be fully loaded to retrieve the values. It can also save the results of a model's method to the
 database, again, to prevent multiple queries and heavy requests.
+
+h3. Denormalizing attributes
+
+To denormalize standard, Active Record attributes from one model, first add the fields to the destination model.
+
+<pre>
+<code>
+	add_column :person_name
+	add_column :person_age
+</code>
+</pre>
+
+By convention, The Denormalizer uses database fields prefixed with the source model's singular name. Once the fields are in place, add the following to the class definition of the source model.
+
+<pre>
+<code>
+	class Person << ActiveRecord::Base
+		has_many :addresses
+ 		denormalizes :name, :to => :addresses
+ 		denormalizes :age, :to => :addresses
+	end
+ </code>
+</pre>
+
+h3. Pulling denormalized attributes
+
+Above, The Denormalizer pushes fields from one source model to another. It can also pull attributes from a related object. The value is pulled when the object is saved to the database.
+
+<pre>
+	<code>
+		class Address << ActiveRecord::Base
+			belongs_to :person
+		 	denormalizes :name, :from => :person
+		  	denormalizes :key, :from => :person
+		 	denormalizes :family_id, :from => :person
+		end
+	</code>
+</pre>
+
+h3. Caching expensive methods
+
+Methods that perform expensive lookups or computation can save their state to the model, again for faster lookups without having to query . Similar to Rails' own counter cache, but more flexible.
+
+<pre>
+	<code>
+		class Workflow << ActiveRecord::Base
+			denormalizes :complete, :using => :complete?
+		
+			def complete?
+				-- expensive --
+			end					
+		end
+	</code>
+</pre>
+
+h2. Feedback
+
+Feedback is always welcome: matt.wood@sanger.ac.uk
